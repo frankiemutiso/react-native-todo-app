@@ -3,10 +3,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { globalStyles } from "../globalStyles";
 
-const List = ({ item, deleteItem }) => {
+const List = ({ item, deleteItem, navigation }) => {
   return (
     <View>
-      <TouchableOpacity style={styles.listItem}>
+      <TouchableOpacity
+        style={styles.listItem}
+        onPress={() => navigation.navigate("Details", { item })}
+      >
         <Text style={globalStyles.text}>{item.title}</Text>
         <TouchableOpacity onPress={() => deleteItem(item.id)}>
           <Text style={styles.remove}>Remove</Text>

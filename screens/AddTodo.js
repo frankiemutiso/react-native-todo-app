@@ -7,7 +7,7 @@ import {
   View
 } from "react-native";
 
-const AddTodo = ({ addTodo }) => {
+const AddTodo = ({ navigation }) => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
 
@@ -33,7 +33,7 @@ const AddTodo = ({ addTodo }) => {
       />
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => addTodo(title, details)}
+        onPress={() => navigation.navigate("Home", { title, details })}
       >
         <Text style={styles.btnText}>Add Item</Text>
       </TouchableOpacity>
