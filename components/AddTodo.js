@@ -8,20 +8,33 @@ import {
 } from "react-native";
 
 const AddTodo = ({ addTodo }) => {
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
+  const [details, setDetails] = useState("");
 
-  const onChange = (textValue) => {
-    return setText(textValue);
+  const onTitleChange = (text) => {
+    return setTitle(text);
+  };
+
+  const onDetailsChange = (text) => {
+    return setDetails(text);
   };
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.textInput}
-        placeholder="Add Item"
-        onChangeText={onChange}
+        placeholder="Task Title"
+        onChangeText={onTitleChange}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => addTodo(text)}>
+      <TextInput
+        style={styles.textInput}
+        onChangeText={onDetailsChange}
+        placeholder="Task Details"
+      />
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => addTodo(title, details)}
+      >
         <Text style={styles.btnText}>Add Item</Text>
       </TouchableOpacity>
     </View>

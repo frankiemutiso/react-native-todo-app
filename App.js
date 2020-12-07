@@ -21,18 +21,28 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const [todos, setTodos] = useState([
-    { id: uuid.v4(), text: "Get the groceries" },
-    { id: uuid.v4(), text: "Learn react native" }
+    {
+      id: uuid.v4(),
+      title: "Get the groceries",
+      details: "Get vegetables, Onions and fruits"
+    },
+    {
+      id: uuid.v4(),
+      title: "Learn react native",
+      details:
+        "Learn how to use react native navigation to build professional apps"
+    }
   ]);
 
   const deleteItem = (id) => {
     return setTodos((prevItems) => prevItems.filter((item) => item.id != id));
   };
 
-  const addTodo = (text) => {
-    if (text === "") return Alert.alert("OOPS!", "Cannot add empty todo");
+  const addTodo = (title, details) => {
+    if ((title === "") & (details === ""))
+      return Alert.alert("OOPS!", "Cannot add empty todo");
     return setTodos((prevItems) => [
-      { id: uuid.v4(), completed: false, text },
+      { id: uuid.v4(), title, details },
       ...prevItems
     ]);
   };
